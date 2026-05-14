@@ -1,0 +1,3 @@
+admin:admin123:ADMIN
+user1:pass123:USER
+jucimar:jucimar123:USER
