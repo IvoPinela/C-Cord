@@ -1,0 +1,18 @@
++-------------+---------------------------------+-------------+
+| CANAIS      | Canal Atual: #linux             | UTILIZADORES|
++-------------+---------------------------------+-------------+
+|             |                                 |             |
+| _#geral     | [Ivo]: Olá malta!               | * Ivo       |
+|             |                                 | * Carlos    |
+| > #linux    | [Carlos]: Tudo bem no C-Cord?   | * David     |
+|             |                                 | * Diego     |
+| _#ajuda     |                                 | * Jucimar   |
+|             |                                 | * Ricardo   |
+|             |                                 | * Rui       |
+|             |                                 | * Miguel    |
++-------------+---------------------------------+ * Admin_C   |
+| COMANDOS    | Escreve a tua mensagem...       |             |
+|             |                                 |             |
+| [GET_INFO]  | [_____________________________] |             |
+| [ECHO]      |                      ( ENVIAR ) |             |
++-------------+---------------------------------+-------------+

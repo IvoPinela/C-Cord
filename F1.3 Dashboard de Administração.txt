@@ -1,0 +1,24 @@
++-------------------------------------------------------------+
+|                 PAINEL DE ADMINISTRAÇÃO C-CORD              |
++-------------------------------------------------------------+
+|  STATUS (Estado do Servidor):                               |
+|  [ Online - Carga Leve - Uptime: 24h 10m ]                  |
+|                                                             |
+|-------------------------------------------------------------|
+|  GESTÃO DE UTILIZADORES:                                    |
+|                                                             |
+|  Utilizadores a aguardar aprovação:                         |
+|  - utilizador_teste22  [ APROVAR ]  [ REJEITAR ]            |
+|                                                             |
+|  [ LISTAR TODOS OS UTILIZADORES (LIST_ALL) ]                |
+|                                                             |
+|  [ APAGAR UTILIZADOR ]: [_________________] -> ( EXECUTAR ) |
+|                                                             |
+|-------------------------------------------------------------|
+|  CONFIGURAÇÕES CRIPTOGRÁFICAS (Segurança):                  |
+|                                                             |
+|  (O) Cifra de César Generalizada (Simétrica)                |
+|  ( ) Diffie-Hellman / RSA                                   |
+|                                                             |
+|  [ GUARDAR CONFIGURAÇÕES ]                                  |
++-------------------------------------------------------------+

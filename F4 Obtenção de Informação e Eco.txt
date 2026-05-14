@@ -1,0 +1,8 @@
+[ CLIENTE AUTENTICADO ]                           [ SERVIDOR ]
+    |                                                |
+    |--- 1. Envia Comando (GET_INFO ou ECHO) ------->|
+    |                                                |
+    |                                                |---> Processa Comando
+    |                                                |
+    |<-- 2. Devolve Dados (Uptime/Versão ou Eco) ----|
+    |                                                |
