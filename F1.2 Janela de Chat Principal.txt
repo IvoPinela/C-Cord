@@ -1,0 +1,18 @@
++----------------+---------------------------------+-------------+
+| CANAIS         | Canal Atual: #criptologia       | UTILIZADORES|
++----------------+---------------------------------+-------------+
+|                |                                 |             |
+| _#geral        | [Ivo]: Olá malta!               | * Ivo       |
+|                |                                 | * Carlos    |
+| > #criptologia | [Carlos]: Tudo bem no C-Cord?   | * David     |
+|                |                                 | * Diego     |
+| _#IPG          |                                 | * Jucimar   |
+|                |                                 | * Ricardo   |
+| _#ajuda        |                                 | * Rui       |
+|                |                                 | * Miguel    |
++----------------+---------------------------------+ * Admin_C   |
+| COMANDOS       | Escreve a tua mensagem...       |             |
+|                |                                 |             |
+| [GET_INFO]     | [_____________________________] |             |
+| [ECHO]         |                      ( ENVIAR ) |             |
++----------------+---------------------------------+-------------+
