@@ -302,8 +302,8 @@ int main(int argc, char *argv[]) {
      */
     
     addr.sin_family = AF_INET;      /* Usar protocolo IPv4 */
-    /* Copiar endereço IP resolvido para a estrutura */
-    addr.sin_addr.s_addr = ((struct in_addr *)(hp->h_addr))->s_addr;
+    /* Copiar endereço IP resolvido para a estrutura usando memcpy (mais seguro) */
+    memcpy(&addr.sin_addr, hp->h_addr_list[0], hp->h_length);
     /* Converter porto de número para formato de rede (big-endian) com htons() */
     addr.sin_port = htons(atoi(argv[2]));
 
