@@ -18,12 +18,12 @@ O sistema baseia-se numa arquitetura Cliente-Servidor, progredindo através de q
 
 | Função | Nome | Responsabilidades |
 | :--- | :--- | :--- |
-| **Team Manager** | David Bunga | Coordenação, planeamento (Gantt) e apresentações. |
+| **Team Manager** | Carlos Martins | Coordenação, planeamento (Gantt) e apresentações. |
 | **Account Manager** | Miguel Rodrigues | Requisitos funcionais/não-funcionais e mockups (Figma). |
 | **Software Manager** | Ricardo Pereira | Arquitetura do sistema e gestão de ferramentas (GitHub). |
 | **Risk & Testing Manager** | Diego França | Plano de mitigação de riscos e protocolos de testes. |
 | **Quality Manager** | Rui Pina | Estado da arte e garantia de qualidade documental. |
-| **Dev Team** | Carlos Martins, Jucimar Cabral, Ivo Pinela | Desenvolvimento técnico das funcionalidades (F1 a F15). |
+| **Dev Team** | David Bunga, Jucimar Cabral, Ivo Pinela | Desenvolvimento técnico das funcionalidades (F1 a F15). |
 
 ---
 
