@@ -177,10 +177,10 @@ int check_auth(const char* username, const char* password, char* role) {
         return 0;
     }
 
-    char line[256], u[50], p[50], r[20], s[20];
+    char line[256], id[10], u[50], p[50], r[20], s[20];
     while (fgets(line, sizeof(line), f)) {
-        /* Parsear linha: username:password:ROLE:STATUS */
-        if (sscanf(line, "%49[^:]:%49[^:]:%19[^:]:%19s", u, p, r, s) == 4) {
+        /* Parsear linha: ID:username:password:ROLE:STATUS */
+        if (sscanf(line, "%9[^:]:%49[^:]:%49[^:]:%19[^:]:%19s", id, u, p, r, s) == 5) {
             if (strcmp(u, username) == 0 && strcmp(p, password) == 0) {
                 fclose(f);
                 /* Utilizadores PENDING não podem autenticar */
@@ -219,9 +219,9 @@ int is_admin(const char* username) {
     FILE* f = fopen(USERS_FILE, "r");
     if (!f) return 0;
 
-    char line[256], u[50], p[50], r[20], s[20];
+    char line[256], id[10], u[50], p[50], r[20], s[20];
     while (fgets(line, sizeof(line), f)) {
-        if (sscanf(line, "%49[^:]:%49[^:]:%19[^:]:%19s", u, p, r, s) == 4) {
+        if (sscanf(line, "%9[^:]:%49[^:]:%49[^:]:%19[^:]:%19s", id, u, p, r, s) == 5) {
             if (strcmp(u, username) == 0 && strcmp(r, "ADMIN") == 0 &&
                 strcmp(s, "ACTIVE") == 0) {
                 fclose(f);
@@ -264,13 +264,13 @@ void list_all(char* response) {
     }
 
     strcpy(response, "=== UTILIZADORES REGISTADOS ===\n");
-    char line[256], u[50], p[50], r[20], s[20];
+    char line[256], id[10], u[50], p[50], r[20], s[20];
     int count = 0;
 
     while (fgets(line, sizeof(line), f)) {
-        if (sscanf(line, "%49[^:]:%49[^:]:%19[^:]:%19s", u, p, r, s) == 4) {
+        if (sscanf(line, "%9[^:]:%49[^:]:%49[^:]:%19[^:]:%19s", id, u, p, r, s) == 5) {
             char entry[128];
-            sprintf(entry, " [%d] %s | Papel: %s | Estado: %s\n", ++count, u, r,
+            sprintf(entry, " [ID:%s] %s | Papel: %s | Estado: %s\n", id, u, r,
                     s);
             strncat(response, entry, BUF_SIZE - strlen(response) - 1);
         }
@@ -490,17 +490,17 @@ void approve_user(const char* admin_user, const char* target, char* response) {
     }
 
     /* Ler linha a linha e processar */
-    char line[256], u[50], p[50], r[20], s[20];
+    char line[256], id[10], u[50], p[50], r[20], s[20];
     int found = 0;
 
     while (fgets(line, sizeof(line), f_read)) {
         /* Remover newline */
         line[strcspn(line, "\n")] = 0;
 
-        if (sscanf(line, "%49[^:]:%49[^:]:%19[^:]:%19s", u, p, r, s) == 4) {
+        if (sscanf(line, "%9[^:]:%49[^:]:%49[^:]:%19[^:]:%19s", id, u, p, r, s) == 5) {
             if (strcmp(u, target) == 0 && strcmp(s, "PENDING") == 0) {
                 /* Encontrou o utilizador PENDING — reescrever com ACTIVE */
-                fprintf(f_write, "%s:%s:%s:ACTIVE\n", u, p, r);
+                fprintf(f_write, "%s:%s:%s:%s:ACTIVE\n", id, u, p, r);
                 found = 1;
             } else {
                 /* Outras linhas — copiar na mesma */
