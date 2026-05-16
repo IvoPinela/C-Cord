@@ -227,13 +227,15 @@ int check_auth(const char* username, const char* password, char* role) {
         return 0;
     }
 
-    char line[256], u[50], p[50], r[20], s[20]; /* Buffers para ler dados */
+    char line[256], id[10], u[50], p[50], r[20],
+        s[20]; /* Buffers para ler dados */
 
     /* Loop: ler linha por linha até fim do ficheiro */
     while (fgets(line, sizeof(line), f)) {
-        /* Parse da linha no formato: username:password:ROLE:STATUS
-           sscanf devolve o número de campos lidos (deve ser 4) */
-        if (sscanf(line, "%49[^:]:%49[^:]:%19[^:]:%19s", u, p, r, s) == 4) {
+        /* Parse da linha no formato: ID:username:password:ROLE:STATUS
+           sscanf devolve o número de campos lidos (deve ser 5) */
+        if (sscanf(line, "%9[^:]:%49[^:]:%49[^:]:%19[^:]:%19s", id, u, p, r,
+                   s) == 5) {
             /* Se encontrou matching do utilizador E password */
             if (strcmp(u, username) == 0 && strcmp(p, password) == 0) {
                 fclose(f);
@@ -290,10 +292,10 @@ int is_admin(const char* username) {
     FILE* f = fopen(USERS_FILE, "r");
     if (!f) return 0; /* Se ficheiro não existe, não é admin */
 
-    char line[256], u[50], p[50], r[20], s[20];
+    char line[256], id[10], u[50], p[50], r[20], s[20];
 
     while (fgets(line, sizeof(line), f)) {
-        if (sscanf(line, "%49[^:]:%49[^:]:%19[^:]:%19s", u, p, r, s) == 4) {
+        if (sscanf(line, "%9[^:]:%49[^:]:%49[^:]:%19[^:]:%19s", id, u, p, r, s) == 5) {
             /* Verificar se é o utilizador procurado E tem papel ADMIN E está
              * ACTIVE */
             if (strcmp(u, username) == 0 && strcmp(r, "ADMIN") == 0 &&
@@ -350,20 +352,17 @@ void list_all(char* response) {
     }
 
     strcpy(response, "=== UTILIZADORES REGISTADOS ===\n");
-    char line[256], u[50], p[50], r[20], s[20];
+    char line[256], id[10], u[50], p[50], r[20], s[20];
     int count = 0;
 
     while (fgets(line, sizeof(line), f)) {
-        if (sscanf(line, "%49[^:]:%49[^:]:%19[^:]:%19s", u, p, r, s) == 4) {
+        if (sscanf(line, "%9[^:]:%49[^:]:%49[^:]:%19[^:]:%19s", id, u, p, r, s) == 5) {
             char entry[128];
             /* Nota: não guardamos a password no output por segurança */
-            sprintf(entry, " [%d] %s | Papel: %s | Estado: %s\n", ++count, u, r,
-                    s);
+            sprintf(entry, " [%s] %s | Papel: %s | Estado: %s\n", id, u, r, s);
             strncat(response, entry, BUF_SIZE - strlen(response) - 1);
         }
     }
-    fclose(f);
-
     /* Se nenhum utilizador encontrado */
     if (count == 0)
         strncat(response, " (sem utilizadores)\n",
